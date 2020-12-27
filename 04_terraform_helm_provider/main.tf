@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ap-south-1"
+  region = "us-west-2"
 }
 
 data "aws_eks_cluster" "cluster" {
@@ -95,7 +95,7 @@ provider "helm" {
 resource "helm_release" "ingress" {
   name       = "ingress"
   chart      = "aws-alb-ingress-controller"
-  repository = "http://storage.googleapis.com/kubernetes-charts-incubator"
+  repository = "https://charts.helm.sh/incubator"
   version    = "1.0.2"
 
   set {
