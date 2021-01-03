@@ -1,15 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: jenkins
+  namespace: jenkins
+  name: hello-ingress
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
     kubernetes.io/ingress.class: alb
 spec:
   rules:
     - http:
         paths:
-          - path: /
+          - path: /*
             backend:
               serviceName: jenkins
               servicePort: 8080
